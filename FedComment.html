@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script type="text/javascript" src="fedRegSearch.js"></script>
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/jquery.dataTables.min.js"></script>
+	
+	<style type="text/css">
+		P.headers {
+		font-size:16px;
+		font-weight:bold;
+		text-align: center 
+		}
+		table.frstyle {
+			font-family: verdana,arial,sans-serif;
+			font-size:12px;
+			color:#333333;
+			border-width: 1px;
+			border-color: #999999;
+			border-collapse: collapse;
+		}
+		table.frstyle th {
+			background:#b5cfd2 url('cell-blue.jpg');
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #999999;
+		}
+		table.frstyle td {
+			background:#dcddc0 url('cell-grey.jpg');
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #999999;
+		}
+		
+		.t_title {
+			width: 40%;
+			}
+			
+		.t_dates {
+			width: 10%;
+			}
+	</style>
+
+</head>
+
+<body>
+<P class='headers'>Federal Register Search
+	<BR>Federal Notices, Proposed Rulemakings and Rules
+	<BR>Source: http://www.regulations.gov/<BR>
+	<span id="dates"></span>
+</P>
+<div id="datatable"></div>
+
+
+<script type="text/javascript" >
+	var today = new Date();
+	var lastTuesday =new Date(today - (7 +(today.getDay() -1) % 7) * 864e+5);
+	var dateout = "Search Dates: " + fedRegSearch.dateFormat(lastTuesday) + " to " + fedRegSearch.dateFormat(today);
+	
+	$('#dates').html(dateout); // show the search dates line
+	
+	fedRegSearch.ajaxGetTable(lastTuesday, '#datatable');
+</script>
+
+</body>
+
+
+
+</html>
