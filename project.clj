@@ -9,6 +9,6 @@
   :cljsbuild {
     :builds [{:source-paths ["src-cljs"]
               :compiler {:output-to "resources/public/js/fedreg-search.js"
-                         :optimizations :advanced
+                         :optimizations :whitespace
                          :pretty-print true}}]}
 )
